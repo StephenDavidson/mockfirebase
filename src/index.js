@@ -1,3 +1,3 @@
 'use strict';
 
-exports = require('./firebase');
+module.exports = require('./firebase')
