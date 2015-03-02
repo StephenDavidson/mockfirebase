@@ -5,7 +5,7 @@ https://github.com/katowulf/mockfirebase
 !function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.mockfirebase=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-exports = require('./firebase');
+require('./firebase')
 
 },{"./firebase":11}],2:[function(require,module,exports){
 // http://wiki.commonjs.org/wiki/Unit_Testing/1.0
@@ -9664,21 +9664,17 @@ exports.isServerTimestamp = function isServerTimestamp (data) {
   'use strict';
   if (typeof window !== 'undefined' && window.mockfirebase) {
     window.MockFirebase = window.mockfirebase.MockFirebase;
-    window.MockFirebaseSimpleLogin = window.mockfirebase.MockFirebaseSimpleLogin;
 
     var originals = false;
     window.MockFirebase.override = function () {
       originals = {
-        firebase: window.Firebase,
-        login: window.FirebaseSimpleLogin
+        firebase: window.Firebase
       };
       window.Firebase = window.mockfirebase.MockFirebase;
-      window.FirebaseSimpleLogin = window.mockfirebase.MockFirebaseSimpleLogin;
     };
     window.MockFirebase.restore = function () {
       if (!originals) return;
       window.Firebase = originals.firebase;
-      window.FirebaseSimpleLogin = originals.login;
     };
   }
 })(window);
