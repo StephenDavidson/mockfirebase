@@ -1,3 +1,3 @@
 'use strict';
 
-require('./firebase')
+module.exports =require('./firebase')
