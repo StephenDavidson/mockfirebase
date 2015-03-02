@@ -1,4 +1,4 @@
-/** mockfirebase - v0.10.3
+/** mockfirebase - v0.10.2
 https://github.com/katowulf/mockfirebase
 * Copyright (c) 2014 Kato
 * License: MIT */
